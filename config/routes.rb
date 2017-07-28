@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-      resources :image_processes
+  resources :image_processes
 end
