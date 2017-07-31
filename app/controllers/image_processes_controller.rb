@@ -20,7 +20,7 @@ class ImageProcessesController < ApplicationController
       if params[:image_process][:crop_x].present?
         @image.picture.recreate_versions!
         @image.save
-        render :show, status: :created, location: @image
+        render json: @image, status: :ok
       end
     end
   end
