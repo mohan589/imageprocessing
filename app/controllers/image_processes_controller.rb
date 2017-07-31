@@ -5,7 +5,7 @@ class ImageProcessesController < ApplicationController
     unless image_params.kind_of? HashWithIndifferentAccess
       @image = ImageProcess.new(image_params)
       if @image.save
-        render :create, status: :created, location: @image
+        render json: @image, status: :created, location: @image
       else
         render json: @image.errors, status: :unprocessable_entity
       end

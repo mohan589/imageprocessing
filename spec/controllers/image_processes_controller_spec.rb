@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe ImageProcessesController, type: :controller do
+  render_views
   describe "Create #create" do
     context 'with valid attributes,responds successfully with an HTTP 200 status code' do
-      it "creates a new image and will be placed in public folder" do
-        post 'create', image_process: FactoryGirl.attributes_for(:image_process)
-        expect(response).to render_template(:create)
+      it "creates a new image and will be placed in public folder" do        
+        expect{
+          post :create, image_process: FactoryGirl.attributes_for(:image_process)
+        }.to change(ImageProcess,:count).by(1)
       end
     end
 
